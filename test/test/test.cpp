@@ -5,6 +5,7 @@
 #include "iostream"
 #include "Student.h"
 #include "common.h"
+#include "GradeStudent.h"
 
 using namespace std;
 
@@ -50,6 +51,20 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Student& testa = test2();
 	cout<<"kk test2="<<&testa<<" score = "<<testa.getScore()<<endl;
+
+	GradeStudent gs(3000);
+	cout<<"kk gs="<<gs.getValue()<<" score = "<<gs.getScore()<<endl;
+
+	//Student* s = &gs;
+	//cout<<"kk s="<<s->getValue()<<" score = "<<s->getScore()<<endl;//getValue 不是student的成员
+
+	Student* s = static_cast<Student*>(&gs);
+	cout<<"kk s="<<s<<" score = "<<&gs<<endl;
+
+	Student& ss = gs.getStudent();
+	Student& ss1 = gs.getStudent1();
+
+	cout<<"kk ss="<<&ss<<" ss1 = "<<&ss1<<" gs = "<<&gs<<endl;
 	
 	return 0;
 }
